@@ -141,6 +141,9 @@ fn typeset(
         document.introspector.rebuild(&document.pages);
         iter += 1;
 
+        // TODO: remove this once https://github.com/rust-lang/rust-clippy/issues/12162 has been
+        // resolved
+        #[allow(clippy::blocks_in_if_conditions)]
         if timed!("check stabilized", document.introspector.validate(&constraint)) {
             break;
         }

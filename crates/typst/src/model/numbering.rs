@@ -96,9 +96,7 @@ impl Numbering {
             return None;
         };
 
-        let Some((prefix, kind, case)) = pat.pieces.first() else {
-            return None;
-        };
+        let (prefix, kind, case) = pat.pieces.first()?;
 
         // If there is a suffix, we cannot use the common style optimisation,
         // since PDF does not provide a suffix field.
