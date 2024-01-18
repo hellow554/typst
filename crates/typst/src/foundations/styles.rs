@@ -76,7 +76,7 @@ impl Styles {
     }
 
     /// Whether this contains no styles.
-    pub fn is_empty(&self) -> bool {
+    pub const fn is_empty(&self) -> bool {
         self.0.is_empty()
     }
 
@@ -173,7 +173,7 @@ pub enum Style {
 
 impl Style {
     /// If this is a property, return it.
-    pub fn property(&self) -> Option<&Property> {
+    pub const fn property(&self) -> Option<&Property> {
         match self {
             Self::Property(property) => Some(property),
             _ => None,
@@ -181,7 +181,7 @@ impl Style {
     }
 
     /// If this is a recipe, return it.
-    pub fn recipe(&self) -> Option<&Recipe> {
+    pub const fn recipe(&self) -> Option<&Recipe> {
         match self {
             Self::Recipe(recipe) => Some(recipe),
             _ => None,
@@ -584,7 +584,7 @@ impl<'a> StyleChain<'a> {
     }
 
     /// Iterate over the links of the chain.
-    fn links(self) -> Links<'a> {
+    const fn links(self) -> Links<'a> {
         Links(Some(self))
     }
 

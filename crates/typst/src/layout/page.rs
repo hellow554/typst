@@ -635,7 +635,7 @@ pub enum Binding {
 
 impl Binding {
     /// Whether to swap left and right margin for the page with this number.
-    fn swap(self, number: NonZeroUsize) -> bool {
+    const fn swap(self, number: NonZeroUsize) -> bool {
         match self {
             // Left-bound must swap on even pages
             // (because it is correct on the first page).
@@ -737,7 +737,7 @@ pub enum Parity {
 
 impl Parity {
     /// Whether the given number matches the parity.
-    fn matches(self, number: usize) -> bool {
+    const fn matches(self, number: usize) -> bool {
         match self {
             Self::Even => number % 2 == 0,
             Self::Odd => number % 2 == 1,

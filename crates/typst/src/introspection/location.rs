@@ -29,7 +29,7 @@ pub struct Location {
 
 impl Location {
     /// Produce a variant of this location.
-    pub fn variant(mut self, n: usize) -> Self {
+    pub const fn variant(mut self, n: usize) -> Self {
         self.variant = n;
         self
     }

@@ -476,7 +476,7 @@ pub enum Sizing {
 
 impl Sizing {
     /// Whether this is fractional sizing.
-    pub fn is_fractional(self) -> bool {
+    pub const fn is_fractional(self) -> bool {
         matches!(self, Self::Fr(_))
     }
 }

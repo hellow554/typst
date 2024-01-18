@@ -153,12 +153,12 @@ struct Field {
 
 impl Field {
     /// Whether the field is present on every instance of the element.
-    fn inherent(&self) -> bool {
+    const fn inherent(&self) -> bool {
         (self.required || self.variadic) && !self.ghost
     }
 
     /// Whether the field can be used with set rules.
-    fn settable(&self) -> bool {
+    const fn settable(&self) -> bool {
         !self.inherent()
     }
 }

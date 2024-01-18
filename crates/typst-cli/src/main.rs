@@ -82,7 +82,7 @@ fn color_stream() -> termcolor::StandardStream {
 }
 
 /// Used by `args.rs`.
-fn typst_version() -> &'static str {
+const fn typst_version() -> &'static str {
     env!("TYPST_VERSION")
 }
 

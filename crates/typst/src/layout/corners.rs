@@ -246,7 +246,7 @@ pub enum Corner {
 
 impl Corner {
     /// The next corner, clockwise.
-    pub fn next_cw(self) -> Self {
+    pub const fn next_cw(self) -> Self {
         match self {
             Self::TopLeft => Self::TopRight,
             Self::TopRight => Self::BottomRight,
@@ -256,7 +256,7 @@ impl Corner {
     }
 
     /// The next corner, counter-clockwise.
-    pub fn next_ccw(self) -> Self {
+    pub const fn next_ccw(self) -> Self {
         match self {
             Self::TopLeft => Self::BottomLeft,
             Self::TopRight => Self::TopLeft,
@@ -266,7 +266,7 @@ impl Corner {
     }
 
     /// The next side, clockwise.
-    pub fn side_cw(self) -> Side {
+    pub const fn side_cw(self) -> Side {
         match self {
             Self::TopLeft => Side::Top,
             Self::TopRight => Side::Right,
@@ -276,7 +276,7 @@ impl Corner {
     }
 
     /// The next side, counter-clockwise.
-    pub fn side_ccw(self) -> Side {
+    pub const fn side_ccw(self) -> Side {
         match self {
             Self::TopLeft => Side::Left,
             Self::TopRight => Side::Top,

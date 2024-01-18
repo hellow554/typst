@@ -197,7 +197,7 @@ pub struct State {
 
 impl State {
     /// Create a new state identified by a key.
-    pub fn new(key: Str, init: Value) -> State {
+    pub const fn new(key: Str, init: Value) -> State {
         Self { key, init }
     }
 
@@ -258,7 +258,7 @@ impl State {
 impl State {
     /// Create a new state identified by a key.
     #[func(constructor)]
-    pub fn construct(
+    pub const fn construct(
         /// The key that identifies this state.
         key: Str,
         /// The initial value of the state.

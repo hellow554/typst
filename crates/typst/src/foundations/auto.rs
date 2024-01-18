@@ -71,17 +71,17 @@ pub enum Smart<T> {
 
 impl<T> Smart<T> {
     /// Whether the value is `Auto`.
-    pub fn is_auto(&self) -> bool {
+    pub const fn is_auto(&self) -> bool {
         matches!(self, Self::Auto)
     }
 
     /// Whether this holds a custom value.
-    pub fn is_custom(&self) -> bool {
+    pub const fn is_custom(&self) -> bool {
         matches!(self, Self::Custom(_))
     }
 
     /// Returns a `Smart<&T>` borrowing the inner `T`.
-    pub fn as_ref(&self) -> Smart<&T> {
+    pub const fn as_ref(&self) -> Smart<&T> {
         match self {
             Smart::Auto => Smart::Auto,
             Smart::Custom(v) => Smart::Custom(v),

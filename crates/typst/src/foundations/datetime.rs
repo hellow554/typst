@@ -200,7 +200,7 @@ impl Datetime {
     }
 
     /// Which kind of variant this datetime stores.
-    pub fn kind(&self) -> &'static str {
+    pub const fn kind(&self) -> &'static str {
         match self {
             Datetime::Datetime(_) => "datetime",
             Datetime::Date(_) => "date",
@@ -345,7 +345,7 @@ impl Datetime {
 
     /// The year if it was specified, or `{none}` for times without a date.
     #[func]
-    pub fn year(&self) -> Option<i32> {
+    pub const fn year(&self) -> Option<i32> {
         match self {
             Self::Date(date) => Some(date.year()),
             Self::Time(_) => None,
@@ -365,7 +365,7 @@ impl Datetime {
 
     /// The weekday (counting Monday as 1) or `{none}` for times without a date.
     #[func]
-    pub fn weekday(&self) -> Option<u8> {
+    pub const fn weekday(&self) -> Option<u8> {
         match self {
             Self::Date(date) => Some(date.weekday().number_from_monday()),
             Self::Time(_) => None,
@@ -375,7 +375,7 @@ impl Datetime {
 
     /// The day if it was specified, or `{none}` for times without a date.
     #[func]
-    pub fn day(&self) -> Option<u8> {
+    pub const fn day(&self) -> Option<u8> {
         match self {
             Self::Date(date) => Some(date.day()),
             Self::Time(_) => None,
@@ -385,7 +385,7 @@ impl Datetime {
 
     /// The hour if it was specified, or `{none}` for dates without a time.
     #[func]
-    pub fn hour(&self) -> Option<u8> {
+    pub const fn hour(&self) -> Option<u8> {
         match self {
             Self::Date(_) => None,
             Self::Time(time) => Some(time.hour()),
@@ -395,7 +395,7 @@ impl Datetime {
 
     /// The minute if it was specified, or `{none}` for dates without a time.
     #[func]
-    pub fn minute(&self) -> Option<u8> {
+    pub const fn minute(&self) -> Option<u8> {
         match self {
             Self::Date(_) => None,
             Self::Time(time) => Some(time.minute()),
@@ -405,7 +405,7 @@ impl Datetime {
 
     /// The second if it was specified, or `{none}` for dates without a time.
     #[func]
-    pub fn second(&self) -> Option<u8> {
+    pub const fn second(&self) -> Option<u8> {
         match self {
             Self::Date(_) => None,
             Self::Time(time) => Some(time.second()),
@@ -415,7 +415,7 @@ impl Datetime {
 
     /// The ordinal (day of the year), or `{none}` for times without a date.
     #[func]
-    pub fn ordinal(&self) -> Option<u16> {
+    pub const fn ordinal(&self) -> Option<u16> {
         match self {
             Self::Datetime(datetime) => Some(datetime.ordinal()),
             Self::Date(date) => Some(date.ordinal()),

@@ -214,12 +214,12 @@ pub struct Counter(CounterKey);
 
 impl Counter {
     /// Create a new counter identified by a key.
-    pub fn new(key: CounterKey) -> Counter {
+    pub const fn new(key: CounterKey) -> Counter {
         Self(key)
     }
 
     /// The counter for the given element.
-    pub fn of(func: Element) -> Self {
+    pub const fn of(func: Element) -> Self {
         Self::construct(CounterKey::Selector(Selector::Elem(func, None)))
     }
 
@@ -332,7 +332,7 @@ impl Counter {
 impl Counter {
     /// Create a new counter identified by a key.
     #[func(constructor)]
-    pub fn construct(
+    pub const fn construct(
         /// The key that identifies this counter.
         ///
         /// - If it is a string, creates a custom counter that is only affected
@@ -703,17 +703,17 @@ pub struct ManualPageCounter {
 
 impl ManualPageCounter {
     /// Create a new fast page counter, starting at 1.
-    pub fn new() -> Self {
+    pub const fn new() -> Self {
         Self { physical: NonZeroUsize::ONE, logical: 1 }
     }
 
     /// Get the current physical page counter state.
-    pub fn physical(&self) -> NonZeroUsize {
+    pub const fn physical(&self) -> NonZeroUsize {
         self.physical
     }
 
     /// Get the current logical page counter state.
-    pub fn logical(&self) -> usize {
+    pub const fn logical(&self) -> usize {
         self.logical
     }
 

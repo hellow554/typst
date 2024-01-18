@@ -80,7 +80,7 @@ impl Point {
     }
 
     /// Convert to a size.
-    pub fn to_size(self) -> Size {
+    pub const fn to_size(self) -> Size {
         Size::new(self.x, self.y)
     }
 }

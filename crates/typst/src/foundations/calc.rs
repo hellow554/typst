@@ -559,7 +559,7 @@ fn binom_impl(n: u64, k: u64) -> Option<i64> {
 /// #calc.gcd(7, 42)
 /// ```
 #[func(title = "Greatest Common Divisor")]
-pub fn gcd(
+pub const fn gcd(
     /// The first integer.
     a: i64,
     /// The second integer.
@@ -791,7 +791,7 @@ fn minmax(
 /// #range(10).filter(calc.even)
 /// ```
 #[func]
-pub fn even(
+pub const fn even(
     /// The number to check for evenness.
     value: i64,
 ) -> bool {
@@ -806,7 +806,7 @@ pub fn even(
 /// #range(10).filter(calc.odd)
 /// ```
 #[func]
-pub fn odd(
+pub const fn odd(
     /// The number to check for oddness.
     value: i64,
 ) -> bool {
@@ -943,7 +943,7 @@ impl Num {
         }
     }
 
-    fn float(self) -> f64 {
+    const fn float(self) -> f64 {
         match self {
             Self::Int(v) => v as f64,
             Self::Float(v) => v,

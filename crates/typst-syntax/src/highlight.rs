@@ -77,7 +77,7 @@ impl Tag {
 
     /// Return the recommended TextMate grammar scope for the given highlighting
     /// tag.
-    pub fn tm_scope(&self) -> &'static str {
+    pub const fn tm_scope(&self) -> &'static str {
         match self {
             Self::Comment => "comment.typst",
             Self::Punctuation => "punctuation.typst",
@@ -104,7 +104,7 @@ impl Tag {
     }
 
     /// The recommended CSS class for the highlighting tag.
-    pub fn css_class(self) -> &'static str {
+    pub const fn css_class(self) -> &'static str {
         match self {
             Self::Comment => "typ-comment",
             Self::Punctuation => "typ-punct",

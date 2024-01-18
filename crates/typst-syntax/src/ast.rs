@@ -340,7 +340,7 @@ impl<'a> AstNode<'a> for Expr<'a> {
 
 impl Expr<'_> {
     /// Can this expression be embedded into markup with a hash?
-    pub fn hash(self) -> bool {
+    pub const fn hash(self) -> bool {
         matches!(
             self,
             Self::Ident(_)
@@ -373,7 +373,7 @@ impl Expr<'_> {
     }
 
     /// Is this a literal?
-    pub fn is_literal(self) -> bool {
+    pub const fn is_literal(self) -> bool {
         matches!(
             self,
             Self::None(_)
@@ -1313,7 +1313,7 @@ pub enum UnOp {
 
 impl UnOp {
     /// Try to convert the token into a unary operation.
-    pub fn from_kind(token: SyntaxKind) -> Option<Self> {
+    pub const fn from_kind(token: SyntaxKind) -> Option<Self> {
         Some(match token {
             SyntaxKind::Plus => Self::Pos,
             SyntaxKind::Minus => Self::Neg,
@@ -1323,7 +1323,7 @@ impl UnOp {
     }
 
     /// The precedence of this operator.
-    pub fn precedence(self) -> usize {
+    pub const fn precedence(self) -> usize {
         match self {
             Self::Pos | Self::Neg => 7,
             Self::Not => 4,
@@ -1331,7 +1331,7 @@ impl UnOp {
     }
 
     /// The string representation of this operation.
-    pub fn as_str(self) -> &'static str {
+    pub const fn as_str(self) -> &'static str {
         match self {
             Self::Pos => "+",
             Self::Neg => "-",
@@ -1418,7 +1418,7 @@ pub enum BinOp {
 
 impl BinOp {
     /// Try to convert the token into a binary operation.
-    pub fn from_kind(token: SyntaxKind) -> Option<Self> {
+    pub const fn from_kind(token: SyntaxKind) -> Option<Self> {
         Some(match token {
             SyntaxKind::Plus => Self::Add,
             SyntaxKind::Minus => Self::Sub,
@@ -1443,7 +1443,7 @@ impl BinOp {
     }
 
     /// The precedence of this operator.
-    pub fn precedence(self) -> usize {
+    pub const fn precedence(self) -> usize {
         match self {
             Self::Mul => 6,
             Self::Div => 6,
@@ -1468,7 +1468,7 @@ impl BinOp {
     }
 
     /// The associativity of this operator.
-    pub fn assoc(self) -> Assoc {
+    pub const fn assoc(self) -> Assoc {
         match self {
             Self::Add => Assoc::Left,
             Self::Sub => Assoc::Left,
@@ -1493,7 +1493,7 @@ impl BinOp {
     }
 
     /// The string representation of this operation.
-    pub fn as_str(self) -> &'static str {
+    pub const fn as_str(self) -> &'static str {
         match self {
             Self::Add => "+",
             Self::Sub => "-",

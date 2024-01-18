@@ -269,7 +269,7 @@ pub enum SyntaxKind {
 
 impl SyntaxKind {
     /// Is this a bracket, brace, or parenthesis?
-    pub fn is_grouping(self) -> bool {
+    pub const fn is_grouping(self) -> bool {
         matches!(
             self,
             Self::LeftBracket
@@ -282,7 +282,7 @@ impl SyntaxKind {
     }
 
     /// Does this node terminate a preceding expression?
-    pub fn is_terminator(self) -> bool {
+    pub const fn is_terminator(self) -> bool {
         matches!(
             self,
             Self::Eof
@@ -294,12 +294,12 @@ impl SyntaxKind {
     }
 
     /// Is this a code or content block.
-    pub fn is_block(self) -> bool {
+    pub const fn is_block(self) -> bool {
         matches!(self, Self::CodeBlock | Self::ContentBlock)
     }
 
     /// Does this node need termination through a semicolon or linebreak?
-    pub fn is_stmt(self) -> bool {
+    pub const fn is_stmt(self) -> bool {
         matches!(
             self,
             Self::LetBinding
@@ -311,7 +311,7 @@ impl SyntaxKind {
     }
 
     /// Is this node is a keyword.
-    pub fn is_keyword(self) -> bool {
+    pub const fn is_keyword(self) -> bool {
         matches!(
             self,
             Self::Not
@@ -338,7 +338,7 @@ impl SyntaxKind {
 
     /// Whether this kind of node is automatically skipped by the parser in
     /// code and math mode.
-    pub fn is_trivia(self) -> bool {
+    pub const fn is_trivia(self) -> bool {
         matches!(
             self,
             Self::Space | Self::Parbreak | Self::LineComment | Self::BlockComment
@@ -351,7 +351,7 @@ impl SyntaxKind {
     }
 
     /// A human-readable name for the kind.
-    pub fn name(self) -> &'static str {
+    pub const fn name(self) -> &'static str {
         match self {
             Self::Markup => "markup",
             Self::Text => "text",

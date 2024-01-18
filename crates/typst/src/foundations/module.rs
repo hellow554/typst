@@ -70,7 +70,7 @@ impl Module {
     }
 
     /// Get the module's name.
-    pub fn name(&self) -> &EcoString {
+    pub const fn name(&self) -> &EcoString {
         &self.name
     }
 

@@ -84,7 +84,7 @@ impl Array {
     }
 
     /// Return `true` if the length is 0.
-    pub fn is_empty(&self) -> bool {
+    pub const fn is_empty(&self) -> bool {
         self.0.is_empty()
     }
 
@@ -167,7 +167,7 @@ impl Array {
 
     /// The number of values in the array.
     #[func(title = "Length")]
-    pub fn len(&self) -> usize {
+    pub const fn len(&self) -> usize {
         self.0.len()
     }
 

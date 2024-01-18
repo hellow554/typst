@@ -103,7 +103,7 @@ impl Element {
     }
 
     /// Create a selector for this element.
-    pub fn select(self) -> Selector {
+    pub const fn select(self) -> Selector {
         Selector::Elem(self, None)
     }
 

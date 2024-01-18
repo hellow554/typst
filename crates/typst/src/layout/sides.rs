@@ -54,7 +54,7 @@ impl<T> Sides<T> {
     }
 
     /// Convert from `&Sides<T>` to `Sides<&T>`.
-    pub fn as_ref(&self) -> Sides<&T> {
+    pub const fn as_ref(&self) -> Sides<&T> {
         Sides {
             left: &self.left,
             top: &self.top,
@@ -251,7 +251,7 @@ pub enum Side {
 
 impl Side {
     /// The opposite side.
-    pub fn inv(self) -> Self {
+    pub const fn inv(self) -> Self {
         match self {
             Self::Left => Self::Right,
             Self::Top => Self::Bottom,
@@ -261,7 +261,7 @@ impl Side {
     }
 
     /// The next side, clockwise.
-    pub fn next_cw(self) -> Self {
+    pub const fn next_cw(self) -> Self {
         match self {
             Self::Left => Self::Top,
             Self::Top => Self::Right,
@@ -271,7 +271,7 @@ impl Side {
     }
 
     /// The next side, counter-clockwise.
-    pub fn next_ccw(self) -> Self {
+    pub const fn next_ccw(self) -> Self {
         match self {
             Self::Left => Self::Bottom,
             Self::Top => Self::Left,
@@ -281,7 +281,7 @@ impl Side {
     }
 
     /// The first corner of the side in clockwise order.
-    pub fn start_corner(self) -> Corner {
+    pub const fn start_corner(self) -> Corner {
         match self {
             Self::Left => Corner::BottomLeft,
             Self::Top => Corner::TopLeft,
@@ -291,12 +291,12 @@ impl Side {
     }
 
     /// The second corner of the side in clockwise order.
-    pub fn end_corner(self) -> Corner {
+    pub const fn end_corner(self) -> Corner {
         self.next_cw().start_corner()
     }
 
     /// Return the corresponding axis.
-    pub fn axis(self) -> Axis {
+    pub const fn axis(self) -> Axis {
         match self {
             Self::Left | Self::Right => Axis::Y,
             Self::Top | Self::Bottom => Axis::X,

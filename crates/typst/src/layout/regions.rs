@@ -26,7 +26,7 @@ pub struct Regions<'a> {
 
 impl Regions<'_> {
     /// Create a new region sequence with exactly one region.
-    pub fn one(size: Size, expand: Axes<bool>) -> Self {
+    pub const fn one(size: Size, expand: Axes<bool>) -> Self {
         Self {
             size,
             full: size.y,
@@ -38,7 +38,7 @@ impl Regions<'_> {
     }
 
     /// Create a new sequence of same-size regions that repeats indefinitely.
-    pub fn repeat(size: Size, expand: Axes<bool>) -> Self {
+    pub const fn repeat(size: Size, expand: Axes<bool>) -> Self {
         Self {
             size,
             full: size.y,
@@ -53,7 +53,7 @@ impl Regions<'_> {
     /// already partially used up.
     ///
     /// This is also used for relative sizing.
-    pub fn base(&self) -> Size {
+    pub const fn base(&self) -> Size {
         Size::new(self.size.x, self.full)
     }
 
@@ -91,7 +91,7 @@ impl Regions<'_> {
     }
 
     /// The same regions, but with different `root` configuration.
-    pub fn with_root(self, root: bool) -> Self {
+    pub const fn with_root(self, root: bool) -> Self {
         Self { root, ..self }
     }
 

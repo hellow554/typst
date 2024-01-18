@@ -242,7 +242,7 @@ impl Func {
     }
 
     /// Extract the element function, if it is one.
-    pub fn element(&self) -> Option<Element> {
+    pub const fn element(&self) -> Option<Element> {
         match self.repr {
             Repr::Element(func) => Some(func),
             _ => None,
@@ -286,7 +286,7 @@ impl Func {
     }
 
     /// The function's span.
-    pub fn span(&self) -> Span {
+    pub const fn span(&self) -> Span {
         self.span
     }
 

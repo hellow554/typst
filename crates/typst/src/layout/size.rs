@@ -18,7 +18,7 @@ impl Size {
     }
 
     /// Convert to a point.
-    pub fn to_point(self) -> Point {
+    pub const fn to_point(self) -> Point {
         Point::new(self.x, self.y)
     }
 

@@ -39,7 +39,7 @@ impl<T> Axes<T> {
     }
 
     /// Convert from `&Axes<T>` to `Axes<&T>`.
-    pub fn as_ref(&self) -> Axes<&T> {
+    pub const fn as_ref(&self) -> Axes<&T> {
         Axes { x: &self.x, y: &self.y }
     }
 
@@ -170,7 +170,7 @@ pub enum Axis {
 
 impl Axis {
     /// The direction with the given positivity for this axis.
-    pub fn dir(self, positive: bool) -> Dir {
+    pub const fn dir(self, positive: bool) -> Dir {
         match (self, positive) {
             (Self::X, true) => Dir::LTR,
             (Self::X, false) => Dir::RTL,
@@ -180,7 +180,7 @@ impl Axis {
     }
 
     /// The other axis.
-    pub fn other(self) -> Self {
+    pub const fn other(self) -> Self {
         match self {
             Self::X => Self::Y,
             Self::Y => Self::X,

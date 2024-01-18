@@ -75,7 +75,7 @@ pub struct Str(EcoString);
 
 impl Str {
     /// Create a new, empty string.
-    pub fn new() -> Self {
+    pub const fn new() -> Self {
         Self(EcoString::new())
     }
 
@@ -260,7 +260,7 @@ impl Str {
     ///    .map(str.to-unicode))
     /// ```
     #[func]
-    pub fn to_unicode(
+    pub const fn to_unicode(
         /// The character that should be converted.
         character: char,
     ) -> u32 {

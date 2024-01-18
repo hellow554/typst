@@ -456,7 +456,7 @@ fn math_class(text: &str) -> Option<MathClass> {
         .and_then(unicode_math_class::class)
 }
 
-fn math_op(kind: SyntaxKind) -> Option<(SyntaxKind, SyntaxKind, ast::Assoc, usize)> {
+const fn math_op(kind: SyntaxKind) -> Option<(SyntaxKind, SyntaxKind, ast::Assoc, usize)> {
     match kind {
         SyntaxKind::Underscore => {
             Some((SyntaxKind::MathAttach, SyntaxKind::Hat, ast::Assoc::Right, 2))
@@ -1474,15 +1474,15 @@ impl<'s> Parser<'s> {
         self.nodes
     }
 
-    fn prev_end(&self) -> usize {
+    const fn prev_end(&self) -> usize {
         self.prev_end
     }
 
-    fn current(&self) -> SyntaxKind {
+    const fn current(&self) -> SyntaxKind {
         self.current
     }
 
-    fn current_start(&self) -> usize {
+    const fn current_start(&self) -> usize {
         self.current_start
     }
 
@@ -1580,7 +1580,7 @@ impl<'s> Parser<'s> {
         self.nodes.insert(from, SyntaxNode::inner(kind, children));
     }
 
-    fn progress(&self, offset: usize) -> bool {
+    const fn progress(&self, offset: usize) -> bool {
         offset < self.prev_end
     }
 

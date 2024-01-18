@@ -612,6 +612,6 @@ pub fn contains(lhs: &Value, rhs: &Value) -> Option<bool> {
 }
 
 #[cold]
-fn too_large() -> &'static str {
+const fn too_large() -> &'static str {
     "value is too large"
 }

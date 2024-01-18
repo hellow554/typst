@@ -155,7 +155,7 @@ enum FlowItem {
 
 impl FlowItem {
     /// The inherent height of the item.
-    fn height(&self) -> Abs {
+    const fn height(&self) -> Abs {
         match self {
             Self::Absolute(v, _) => *v,
             Self::Fractional(_) | Self::Placed { .. } => Abs::zero(),

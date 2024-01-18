@@ -352,7 +352,7 @@ pub enum Delimiter {
 
 impl Delimiter {
     /// The delimiter's opening character.
-    fn open(self) -> char {
+    const fn open(self) -> char {
         match self {
             Self::Paren => '(',
             Self::Bracket => '[',
@@ -363,7 +363,7 @@ impl Delimiter {
     }
 
     /// The delimiter's closing character.
-    fn close(self) -> char {
+    const fn close(self) -> char {
         match self {
             Self::Paren => ')',
             Self::Bracket => ']',

@@ -227,7 +227,7 @@ fn time_suffix(duration: Duration) -> String {
 
 /// Format the total amount of seconds into the amount of days, hours, minutes
 /// and seconds.
-fn format_dhms(sec: u64) -> (u64, u8, u8, u8) {
+const fn format_dhms(sec: u64) -> (u64, u8, u8, u8) {
     let (mins, sec) = (sec / 60, (sec % 60) as u8);
     let (hours, mins) = (mins / 60, (mins % 60) as u8);
     let (days, hours) = (hours / 24, (hours % 24) as u8);

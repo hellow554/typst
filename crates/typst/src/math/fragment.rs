@@ -29,7 +29,7 @@ impl MathFragment {
         Size::new(self.width(), self.height())
     }
 
-    pub fn width(&self) -> Abs {
+    pub const fn width(&self) -> Abs {
         match self {
             Self::Glyph(glyph) => glyph.width,
             Self::Variant(variant) => variant.frame.width(),
@@ -76,7 +76,7 @@ impl MathFragment {
         })
     }
 
-    pub fn style(&self) -> Option<MathStyle> {
+    pub const fn style(&self) -> Option<MathStyle> {
         match self {
             Self::Glyph(glyph) => Some(glyph.style),
             Self::Variant(variant) => Some(variant.style),
@@ -85,7 +85,7 @@ impl MathFragment {
         }
     }
 
-    pub fn font_size(&self) -> Option<Abs> {
+    pub const fn font_size(&self) -> Option<Abs> {
         match self {
             Self::Glyph(glyph) => Some(glyph.font_size),
             Self::Variant(variant) => Some(variant.font_size),
@@ -150,7 +150,7 @@ impl MathFragment {
         }
     }
 
-    pub fn italics_correction(&self) -> Abs {
+    pub const fn italics_correction(&self) -> Abs {
         match self {
             Self::Glyph(glyph) => glyph.italics_correction,
             Self::Variant(variant) => variant.italics_correction,
@@ -177,7 +177,7 @@ impl MathFragment {
         }
     }
 
-    pub fn limits(&self) -> Limits {
+    pub const fn limits(&self) -> Limits {
         match self {
             MathFragment::Glyph(glyph) => glyph.limits,
             MathFragment::Variant(variant) => variant.limits,

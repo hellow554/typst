@@ -340,7 +340,7 @@ impl<T> Gen<T> {
 
 impl Gen<Abs> {
     /// The zero value.
-    fn zero() -> Self {
+    const fn zero() -> Self {
         Self { cross: Abs::zero(), main: Abs::zero() }
     }
 

@@ -98,7 +98,7 @@ impl SystemWorld {
     }
 
     /// The id of the main source file.
-    pub fn main(&self) -> FileId {
+    pub const fn main(&self) -> FileId {
         self.main
     }
 
@@ -130,7 +130,7 @@ impl SystemWorld {
     }
 
     /// Return the canonical path to the input file.
-    pub fn input(&self) -> &PathBuf {
+    pub const fn input(&self) -> &PathBuf {
         &self.input
     }
 
@@ -141,7 +141,7 @@ impl SystemWorld {
     }
 
     /// Gets access to the export cache.
-    pub fn export_cache(&self) -> &ExportCache {
+    pub const fn export_cache(&self) -> &ExportCache {
         &self.export_cache
     }
 }
@@ -217,7 +217,7 @@ impl FileSlot {
     }
 
     /// Whether the file was accessed in the ongoing compilation.
-    fn accessed(&self) -> bool {
+    const fn accessed(&self) -> bool {
         self.source.accessed() || self.file.accessed()
     }
 
@@ -265,12 +265,12 @@ struct SlotCell<T> {
 
 impl<T: Clone> SlotCell<T> {
     /// Creates a new, empty cell.
-    fn new() -> Self {
+    const fn new() -> Self {
         Self { data: None, fingerprint: 0, accessed: false }
     }
 
     /// Whether the cell was accessed in the ongoing compilation.
-    fn accessed(&self) -> bool {
+    const fn accessed(&self) -> bool {
         self.accessed
     }
 

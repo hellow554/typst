@@ -47,7 +47,7 @@ impl Label {
     }
 
     /// Turns this label into its inner interned string.
-    pub fn into_inner(self) -> PicoStr {
+    pub const fn into_inner(self) -> PicoStr {
         self.0
     }
 }
@@ -56,7 +56,7 @@ impl Label {
 impl Label {
     /// Creates a label from a string.
     #[func(constructor)]
-    pub fn construct(
+    pub const fn construct(
         /// The name of the label.
         name: PicoStr,
     ) -> Label {

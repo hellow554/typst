@@ -159,7 +159,7 @@ impl Selector {
     /// - A `{<label>}`.
     /// - A more complex selector like `{heading.where(level: 1)}`.
     #[func(constructor)]
-    pub fn construct(
+    pub const fn construct(
         /// Can be an element function like a `heading` or `figure`, a `{<label>}`
         /// or a more complex selector like `{heading.where(level: 1)}`.
         target: Selector,

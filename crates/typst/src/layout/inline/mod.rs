@@ -230,7 +230,7 @@ enum Item<'a> {
 
 impl<'a> Item<'a> {
     /// If this a text item, return it.
-    fn text(&self) -> Option<&ShapedText<'a>> {
+    const fn text(&self) -> Option<&ShapedText<'a>> {
         match self {
             Self::Text(shaped) => Some(shaped),
             _ => None,
@@ -246,7 +246,7 @@ impl<'a> Item<'a> {
 
     /// The text length of the item.
     #[allow(clippy::len_without_is_empty)]
-    fn len(&self) -> usize {
+    const fn len(&self) -> usize {
         match self {
             Self::Text(shaped) => shaped.text.len(),
             Self::Absolute(_) | Self::Fractional(_, _) => SPACING_REPLACE.len_utf8(),
@@ -256,7 +256,7 @@ impl<'a> Item<'a> {
     }
 
     /// The natural layouted width of the item.
-    fn width(&self) -> Abs {
+    const fn width(&self) -> Abs {
         match self {
             Self::Text(shaped) => shaped.width,
             Self::Absolute(v) => *v,
@@ -737,7 +737,7 @@ fn shape_range<'a>(
 }
 
 /// Whether this is not a specific script.
-fn is_generic_script(script: Script) -> bool {
+const fn is_generic_script(script: Script) -> bool {
     matches!(script, Script::Unknown | Script::Common | Script::Inherited)
 }
 
@@ -1395,7 +1395,7 @@ fn reorder<'a>(line: &'a Line<'a>) -> (Vec<&Item<'a>>, bool) {
 ///
 /// For more discussion, see:
 /// https://recoveringphysicist.com/21/
-fn overhang(c: char) -> f64 {
+const fn overhang(c: char) -> f64 {
     match c {
         // Dashes.
         '–' | '—' => 0.2,

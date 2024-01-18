@@ -199,12 +199,12 @@ fn try_reparse(
 }
 
 /// Whether the inner range is fully contained in the outer one (no touching).
-fn includes(outer: &Range<usize>, inner: &Range<usize>) -> bool {
+const fn includes(outer: &Range<usize>, inner: &Range<usize>) -> bool {
     outer.start < inner.start && outer.end > inner.end
 }
 
 /// Whether the first and second range overlap or touch.
-fn overlaps(first: &Range<usize>, second: &Range<usize>) -> bool {
+const fn overlaps(first: &Range<usize>, second: &Range<usize>) -> bool {
     (first.start <= second.start && second.start <= first.end)
         || (second.start <= first.start && first.start <= second.end)
 }

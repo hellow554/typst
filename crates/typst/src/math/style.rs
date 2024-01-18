@@ -334,32 +334,32 @@ pub struct MathStyle {
 
 impl MathStyle {
     /// This style, with the given `variant`.
-    pub fn with_variant(self, variant: MathVariant) -> Self {
+    pub const fn with_variant(self, variant: MathVariant) -> Self {
         Self { variant, ..self }
     }
 
     /// This style, with the given `size`.
-    pub fn with_size(self, size: MathSize) -> Self {
+    pub const fn with_size(self, size: MathSize) -> Self {
         Self { size, ..self }
     }
 
     // This style, with the given `class`.
-    pub fn with_class(self, class: MathClass) -> Self {
+    pub const fn with_class(self, class: MathClass) -> Self {
         Self { class: Smart::Custom(class), ..self }
     }
 
     /// This style, with `cramped` set to the given value.
-    pub fn with_cramped(self, cramped: bool) -> Self {
+    pub const fn with_cramped(self, cramped: bool) -> Self {
         Self { cramped, ..self }
     }
 
     /// This style, with `bold` set to the given value.
-    pub fn with_bold(self, bold: bool) -> Self {
+    pub const fn with_bold(self, bold: bool) -> Self {
         Self { bold, ..self }
     }
 
     /// This style, with `italic` set to the given value.
-    pub fn with_italic(self, italic: bool) -> Self {
+    pub const fn with_italic(self, italic: bool) -> Self {
         Self { italic: Smart::Custom(italic), ..self }
     }
 
@@ -369,7 +369,7 @@ impl MathStyle {
     }
 
     /// The style for superscripts in the current style.
-    pub fn for_superscript(self) -> Self {
+    pub const fn for_superscript(self) -> Self {
         self.with_size(match self.size {
             MathSize::Display | MathSize::Text => MathSize::Script,
             MathSize::Script | MathSize::ScriptScript => MathSize::ScriptScript,
@@ -377,7 +377,7 @@ impl MathStyle {
     }
 
     /// The style for numerators in the current style.
-    pub fn for_numerator(self) -> Self {
+    pub const fn for_numerator(self) -> Self {
         self.with_size(match self.size {
             MathSize::Display => MathSize::Text,
             MathSize::Text => MathSize::Script,
@@ -550,7 +550,7 @@ pub(super) fn styled_char(style: MathStyle, c: char) -> char {
     std::char::from_u32(start + (c as u32 - base as u32)).unwrap()
 }
 
-fn basic_exception(c: char) -> Option<char> {
+const fn basic_exception(c: char) -> Option<char> {
     Some(match c {
         '〈' => '⟨',
         '〉' => '⟩',
@@ -560,7 +560,7 @@ fn basic_exception(c: char) -> Option<char> {
     })
 }
 
-fn latin_exception(
+const fn latin_exception(
     c: char,
     variant: MathVariant,
     bold: bool,
@@ -598,7 +598,7 @@ fn latin_exception(
     })
 }
 
-fn greek_exception(
+const fn greek_exception(
     c: char,
     variant: MathVariant,
     bold: bool,

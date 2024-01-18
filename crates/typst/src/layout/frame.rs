@@ -70,7 +70,7 @@ impl Frame {
     }
 
     /// Whether the frame is hard or soft.
-    pub fn kind(&self) -> FrameKind {
+    pub const fn kind(&self) -> FrameKind {
         self.kind
     }
 
@@ -80,7 +80,7 @@ impl Frame {
     }
 
     /// The size of the frame.
-    pub fn size(&self) -> Size {
+    pub const fn size(&self) -> Size {
         self.size
     }
 
@@ -95,12 +95,12 @@ impl Frame {
     }
 
     /// The width of the frame.
-    pub fn width(&self) -> Abs {
+    pub const fn width(&self) -> Abs {
         self.size.x
     }
 
     /// The height of the frame.
-    pub fn height(&self) -> Abs {
+    pub const fn height(&self) -> Abs {
         self.size.y
     }
 
@@ -110,7 +110,7 @@ impl Frame {
     }
 
     /// Whether the frame has a non-default baseline.
-    pub fn has_baseline(&self) -> bool {
+    pub const fn has_baseline(&self) -> bool {
         self.baseline.is_some()
     }
 
@@ -444,12 +444,12 @@ pub enum FrameKind {
 
 impl FrameKind {
     /// Returns `true` if the frame is soft.
-    pub fn is_soft(self) -> bool {
+    pub const fn is_soft(self) -> bool {
         matches!(self, Self::Soft)
     }
 
     /// Returns `true` if the frame is hard.
-    pub fn is_hard(self) -> bool {
+    pub const fn is_hard(self) -> bool {
         matches!(self, Self::Hard)
     }
 }

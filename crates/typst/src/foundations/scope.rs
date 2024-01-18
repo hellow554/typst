@@ -251,12 +251,12 @@ enum Kind {
 
 impl Slot {
     /// Create a new slot.
-    fn new(value: Value, kind: Kind, category: Option<Category>) -> Self {
+    const fn new(value: Value, kind: Kind, category: Option<Category>) -> Self {
         Self { value, kind, category }
     }
 
     /// Read the value.
-    fn read(&self) -> &Value {
+    const fn read(&self) -> &Value {
         &self.value
     }
 

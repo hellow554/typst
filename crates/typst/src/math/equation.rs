@@ -146,7 +146,7 @@ pub enum MathParItem {
 
 impl MathParItem {
     /// The text representation of this item.
-    pub fn text(&self) -> char {
+    pub const fn text(&self) -> char {
         match self {
             MathParItem::Space(_) => ' ',        // Space
             MathParItem::Frame(_) => '\u{FFFC}', // Object Replacement Character

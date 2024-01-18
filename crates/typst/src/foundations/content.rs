@@ -111,7 +111,7 @@ impl Content {
     }
 
     /// Get the span of the content.
-    pub fn span(&self) -> Span {
+    pub const fn span(&self) -> Span {
         self.span
     }
 
@@ -808,7 +808,7 @@ impl<T: NativeElement> Packed<T> {
     }
 
     /// The element's span.
-    pub fn span(&self) -> Span {
+    pub const fn span(&self) -> Span {
         self.0.span()
     }
 

@@ -44,7 +44,7 @@ impl<'s> Lexer<'s> {
     }
 
     /// Get the current lexing mode.
-    pub fn mode(&self) -> LexMode {
+    pub const fn mode(&self) -> LexMode {
         self.mode
     }
 
@@ -65,7 +65,7 @@ impl<'s> Lexer<'s> {
     }
 
     /// Whether the last token contained a newline.
-    pub fn newline(&self) -> bool {
+    pub const fn newline(&self) -> bool {
         self.newline
     }
 
@@ -630,7 +630,7 @@ fn keyword(ident: &str) -> Option<SyntaxKind> {
 
 /// Whether a character is interpreted as a newline by Typst.
 #[inline]
-pub fn is_newline(character: char) -> bool {
+pub const fn is_newline(character: char) -> bool {
     matches!(
         character,
         // Line Feed, Vertical Tab, Form Feed, Carriage Return.

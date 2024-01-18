@@ -103,12 +103,12 @@ pub struct Spanned<T> {
 
 impl<T> Spanned<T> {
     /// Create a new instance from a value and its span.
-    pub fn new(v: T, span: Span) -> Self {
+    pub const fn new(v: T, span: Span) -> Self {
         Self { v, span }
     }
 
     /// Convert from `&Spanned<T>` to `Spanned<&T>`
-    pub fn as_ref(&self) -> Spanned<&T> {
+    pub const fn as_ref(&self) -> Spanned<&T> {
         Spanned { v: &self.v, span: self.span }
     }
 

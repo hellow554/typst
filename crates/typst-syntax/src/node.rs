@@ -222,7 +222,7 @@ impl SyntaxNode {
     }
 
     /// Whether this is a leaf node.
-    pub(super) fn is_leaf(&self) -> bool {
+    pub(super) const fn is_leaf(&self) -> bool {
         matches!(self.0, Repr::Leaf(_))
     }
 
@@ -677,22 +677,22 @@ pub struct LinkedNode<'a> {
 
 impl<'a> LinkedNode<'a> {
     /// Start a new traversal at a root node.
-    pub fn new(root: &'a SyntaxNode) -> Self {
+    pub const fn new(root: &'a SyntaxNode) -> Self {
         Self { node: root, parent: None, index: 0, offset: 0 }
     }
 
     /// Get the contained syntax node.
-    pub fn get(&self) -> &'a SyntaxNode {
+    pub const fn get(&self) -> &'a SyntaxNode {
         self.node
     }
 
     /// The index of this node in its parent's children list.
-    pub fn index(&self) -> usize {
+    pub const fn index(&self) -> usize {
         self.index
     }
 
     /// The absolute byte offset of this node in the source file.
-    pub fn offset(&self) -> usize {
+    pub const fn offset(&self) -> usize {
         self.offset
     }
 

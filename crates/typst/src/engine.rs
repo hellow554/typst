@@ -84,7 +84,7 @@ impl Route<'_> {
 
 impl<'a> Route<'a> {
     /// Create a new, empty route.
-    pub fn root() -> Self {
+    pub const fn root() -> Self {
         Self {
             id: None,
             outer: None,
@@ -94,7 +94,7 @@ impl<'a> Route<'a> {
     }
 
     /// Extend the route with another segment with a default length of 1.
-    pub fn extend(outer: Tracked<'a, Self>) -> Self {
+    pub const fn extend(outer: Tracked<'a, Self>) -> Self {
         Route {
             outer: Some(outer),
             id: None,
@@ -104,12 +104,12 @@ impl<'a> Route<'a> {
     }
 
     /// Attach a file id to the route segment.
-    pub fn with_id(self, id: FileId) -> Self {
+    pub const fn with_id(self, id: FileId) -> Self {
         Self { id: Some(id), ..self }
     }
 
     /// Set the length of the route segment to zero.
-    pub fn unnested(self) -> Self {
+    pub const fn unnested(self) -> Self {
         Self { len: 0, ..self }
     }
 
